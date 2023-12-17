@@ -50,5 +50,14 @@ public class CustomerController {
         response.setCode(200);
         return response;
     }
+    @DeleteMapping("/customers/{id}.json")
+    public  ApiResponse<Customer> delete (@PathVariable("id") Long id){
+        ApiResponse<Customer> response = new ApiResponse<>();
+        response.setCode(200);
+        Customer customer = customerService.findById(id);
+         customerService.deleteById(id);
+        response.setData(customer);
+        return response;
+    }
 
 }

@@ -2,6 +2,7 @@ package ApiDemo.controllers;
 
 import ApiDemo.Response.ApiResponse;
 import ApiDemo.entities.Product;
+import ApiDemo.entities.Product;
 import ApiDemo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -50,5 +51,16 @@ public class ProductController {
         response.setCode(200);
         return response;
     }
+
+    @DeleteMapping("/products/{id}.json")
+    public  ApiResponse<Product> delete (@PathVariable("id") Long id){
+        ApiResponse<Product> response = new ApiResponse<>();
+        response.setCode(200);
+        Product customer = productService.findById(id);
+        productService.deleteById(id);
+        response.setData(customer);
+        return response;
+    }
+
 
 }
