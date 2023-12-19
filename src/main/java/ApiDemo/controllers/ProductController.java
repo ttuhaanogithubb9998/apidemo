@@ -2,14 +2,15 @@ package ApiDemo.controllers;
 
 import ApiDemo.Response.ApiResponse;
 import ApiDemo.entities.Product;
-import ApiDemo.entities.Product;
 import ApiDemo.services.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Slf4j
 public class ProductController {
 
     @Autowired
@@ -53,7 +54,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/products/{id}.json")
-    public  ApiResponse<Product> delete (@PathVariable("id") Long id){
+    public ApiResponse<Product> delete(@PathVariable("id") Long id) {
         ApiResponse<Product> response = new ApiResponse<>();
         response.setCode(200);
         Product customer = productService.findById(id);

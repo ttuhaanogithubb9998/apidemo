@@ -35,3 +35,4 @@ build/
 mysqldb
 mysql.init
 .env
+*/files/*
